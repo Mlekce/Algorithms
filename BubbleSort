@@ -1,0 +1,11 @@
+def bubbleSort(array):
+    has_swapped = True
+    while has_swapped:
+        has_swapped = False
+        for i in range(1, len(array)):
+            if array[i] < array[i-1]:
+                array[i], array[i-1] = array[i-1], array[i]
+                has_swapped = True
+    return array
+
+print(bubbleSort([64, 34, 25, 12, 22, 11, 90]))
