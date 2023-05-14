@@ -1,0 +1,10 @@
+list = [101,1, 4, 2, 56, 9, 43, 23, 8, 1, 99]
+
+for i in range(0,len(list)):
+    for j in range(i+1,len(list)):
+        if list[i] > list[j]:
+            temp  = list[i]
+            list[i] = list[j]
+            list[j] = temp
+        
+print(list)
