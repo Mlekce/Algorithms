@@ -1,10 +1,22 @@
-list = [101,1, 4, 2, 56, 9, 43, 23, 8, 1, 99]
+def selection_sort(list):
+    for i in range(len(list)):
+        min_index = i
+        for j in range(i+1, len(list)):
+            if list[min_index] > list[j]:
+                min_index = j
+        if min_index != i:
+            list[min_index], list[i] = list[i], list[min_index]
+    return list
 
-for i in range(0,len(list)):
-    for j in range(i+1,len(list)):
-        if list[i] > list[j]:
-            temp  = list[i]
-            list[i] = list[j]
-            list[j] = temp
-        
-print(list)
+print(selection_sort([101,1, 4, 2, 56, 9, 43, 23, 8, 1, 99]))
+
+#############################################################
+Second way
+#############################################################
+
+def selection_sort(list):
+    for i in range(len(list)):
+        for j in range(i+1, len(list)):
+            if list[i] > list[j]:
+                list[i], list[j] = list[j], list[i]
+    return list
