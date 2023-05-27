@@ -1,0 +1,79 @@
+class Node:
+    def __init__(self, value) -> None:
+        self.value = value
+        self.next = None
+
+class LinkedList:
+    def __init__(self) -> None:
+        self.head = None
+        self.tail = None
+        self.length = 0
+
+    def append(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+            self.length += 1
+            return True
+        self.tail.next = new_node
+        self.tail = new_node
+        self.length += 1
+        return True
+    
+    def print_list(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+
+    def bubble_sort(self):
+        if self.length < 2:
+            return False
+        sorted = False
+        while not sorted:
+            sorted = True
+            pre = None
+            temp = self.head
+            while temp.next is not None:
+                next_node = temp.next
+                if temp.value > next_node.value:
+                    sorted = False
+                    if pre is not None:
+                        pre.next = next_node
+                    else:
+                        self.head = next_node
+                    temp.next = next_node.next
+                    next_node.next = temp
+                    pre = next_node
+                else:
+                    pre = temp
+                    temp = temp.next
+        return True
+        
+        
+        #################################################
+        My hakish solution that is not really Bubble Sort for the lolz. 
+        It doesn't swap nodes, it just swap the values. 
+        it is working but it is not what was asked.
+        #################################################
+        
+        def bubble_sort(self):
+        if self.length < 2:
+            return False
+        else: 
+            unsorted = True
+            while unsorted:
+                temp = self.head.next
+                pre = self.head
+                unsorted = False
+                while temp is not None:
+                    if temp.value < pre.value:
+                        temp.value, pre.value = pre.value , temp.value
+                        unsorted = True
+                    else:
+                        pre = pre.next
+                        temp = temp.next            
+        return True
