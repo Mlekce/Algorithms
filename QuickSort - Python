@@ -1,0 +1,21 @@
+class QuickSort:
+    def __init__(self, lst):
+        self.arr = lst
+
+    def sort(self):
+        if len(self.arr) <= 1:
+            return self.arr
+        last_element = self.arr[-1]
+        greater = []
+        smaller = []
+        for item in self.arr[:-1]:
+            if item > last_element:
+                greater.append(item)
+            else:
+                smaller.append(item)
+        return QuickSort(smaller).sort() + [last_element] + QuickSort(greater).sort()
+
+my_arr = QuickSort([4, 3, 10, 12, 2, 1, 5, 6])
+print(my_arr.sort())
+
+Output: [1, 2, 3, 4, 5, 6, 10, 12]
