@@ -1,0 +1,19 @@
+def binary_search(arr, t, start=0, end=None):
+    if end is None:
+        end = len(arr) - 1
+    
+    if start > end:
+        return "None"
+    
+    mid = (start + end) // 2
+    
+    if arr[mid] == t:
+        return "Found"
+    elif arr[mid] < t:
+        return binary_search(arr, t, mid + 1, end)
+    else:
+        return binary_search(arr, t, start, mid - 1)
+
+print(binary_search([1,2,5,9,11,13,17,21,38,42,49,53,55,56,75,83,99,101], 1))
+print(binary_search([1,2,5,9,11,13,17,21,38,42,49,53,55,56,75,83,99,101], 3))
+print(binary_search([1,2,5,9,11,13,17,21,38,42,49,53,55,56,75,83,99,101], 102))
